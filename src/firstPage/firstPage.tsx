@@ -11,26 +11,20 @@ import 'react-toastify/dist/ReactToastify.css';
 function FirstPage() {
     const Theme1 = createTheme({
         palette: {
-            primary: {
-              main: '#00FF00',
-            },
             success: {
-              main: '#FFA500',
+              main: '#A7727D',
             },
-            error: {
-              main: "#FFA500",
-            },
+            secondary:{
+                main:'#A7727D'
+            }
         }
     })
 
     const Theme2 = createTheme({
         palette: {
-            primary: {
-              main: '#00FF00',
-            },
-            error: {
-              main: "#FFA500",
-            },
+            secondary:{
+                main:'#A7727D'
+            }
         }
     })
     const [inputTheme,setTheme] = useState(Theme1)
@@ -58,12 +52,13 @@ function FirstPage() {
             setTheme(Theme2)
     }
 
-    return(<div style={{display:"flex",flexDirection:"column",justifyContent:"space-between",height:"25vw",margin:"12vw 30vw",width:"40vw"}}>
+    return(<div id="infoBox">
+        <h3>Enter Your Details</h3>
         <ThemeProvider theme={inputTheme}>
-        <TextField onClick={nameCheck} onChange={nameCheck} color="success" id="outlined-basic" label="Name" variant="outlined" />
+        <TextField className="textField" onClick={nameCheck} onChange={nameCheck} color="success" id="outlined-basic" label="Name" variant="outlined" />
         <TextField onClick={numCheck} onChange={numCheck} type="number" color="success" id="outlined-basic" label="Phone Number" variant="outlined" />
         <TextField onClick={emailCheck} onChange={emailCheck} color="success" id="outlined-basic" label="Email" variant="outlined" />
-        <Button color="secondary" variant="contained">Contained</Button>
+        <Button color="secondary" variant="contained">Save</Button>
         </ThemeProvider>
         <ToastContainer limit={2} theme="light" position="top-center"/>
         </div>
