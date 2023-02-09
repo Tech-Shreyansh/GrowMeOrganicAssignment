@@ -1,11 +1,14 @@
-import React from 'react'
-import './App.css'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FirstPage from "./firstPage/firstPage";
 
 function App() {
   return (
-    <div>
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<FirstPage />} path="/" />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
