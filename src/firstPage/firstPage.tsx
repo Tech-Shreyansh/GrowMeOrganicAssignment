@@ -55,7 +55,7 @@ function FirstPage() {
         }
     }
     function nameCheck(e:any) {
-        if((/^[a-zA-Z]*$/).test(e.target.value)||e.target.value=="")
+        if((/^[a-zA-Z ]*$/).test(e.target.value)||e.target.value=="")
         {
             setName(e.target.value);
             document.getElementById("nameError")!.style.visibility = "hidden";
