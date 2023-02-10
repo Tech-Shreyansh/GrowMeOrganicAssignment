@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function FirstPage() {
+    localStorage.clear()
     const Theme1 = createTheme({
         palette: {
             success: {
@@ -87,23 +88,34 @@ function FirstPage() {
             setTheme(Theme1)
         }
     }
+    function sumbit(){
+        if(name&&email&&number){
+            localStorage.setItem("name",name)
+            localStorage.setItem("number",String(number))
+            localStorage.setItem("email",email)
+        }
+        else{
+            toast.dismiss()
+            toast.error("Enter All Details Correctly");
+        }
+    }
 
     return(<div id="infoBox">
         <h3>Enter Your Details</h3>
         <ThemeProvider theme={inputTheme}>
         <div>
-        <TextField fullWidth className="textField" onClick={nameCheck} onChange={nameCheck} color="success" id="outlined-basic" label="Name" variant="outlined" />
+        <TextField fullWidth className="textField" onClick={nameCheck} onChange={nameCheck} color="success" label="Name" variant="outlined" />
         <p className="error" id="nameError">Name Can Only Have Alphabets</p>
         </div>
         <div>
-        <TextField fullWidth className="textField" onClick={numCheck} onChange={numCheck} type="number" color="success" id="outlined-basic" label="Phone Number" variant="outlined" />
+        <TextField fullWidth className="textField" onClick={numCheck} onChange={numCheck} type="number" color="success" label="Phone Number" variant="outlined" />
         <p className="error" id="numError">Enter a Valid 10-12 digit Number</p>
         </div>
         <div>
-        <TextField fullWidth className="textField" onClick={emailCheck} onChange={emailCheck} color="success" id="outlined-basic" label="Email" variant="outlined" />
+        <TextField fullWidth className="textField" onClick={emailCheck} onChange={emailCheck} type="email" color="success" label="Email" variant="outlined" />
         <p className="error" id="emailError">Enter a Valid Email Address</p>
         </div>
-        <Button color="secondary" variant="contained">Save</Button>
+        <Button onClick={sumbit} color="secondary" variant="contained">Save</Button>
         </ThemeProvider>
         <ToastContainer limit={2} theme="light" position="top-center"/>
         </div>
