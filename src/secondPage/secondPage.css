@@ -13,3 +13,7 @@
     margin: 0 2vw;
     overflow-x: hidden;
 }
+
+#data{
+    height: 80vh;
+}
