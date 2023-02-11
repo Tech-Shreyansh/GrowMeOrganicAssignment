@@ -20,9 +20,9 @@ function Data() {
     useEffect(()=>{name()},[])
 
     const column: GridColDef[] = [
-        { field: "userId", headerName: "User Id", width: 300 },
-        { field: "title", headerName: "title", width: 300 },
-        { field: "body", headerName: "body", width: 300 },
+        { field: "userId", headerName: "User Id", flex:0.2, hideable:false, headerAlign:"center",align:"center", headerClassName: 'column', },
+        { field: "title", headerName: "Title", flex:0.3,  headerAlign:"center",headerClassName: 'column'},
+        { field: "body", headerName: "Body", flex:0.5,headerClassName: 'column',  headerAlign:"center"},
     ];
 
     x.map((box:any)=>{
@@ -37,7 +37,12 @@ function Data() {
     const rows: GridRowsProp = data;
     return (
     <div id="data">
-      <DataGrid rows={rows} columns={column} />
+      <DataGrid 
+      sx={{
+          '& .MuiDataGrid-cell:hover': {
+            color: 'secondary.main',
+          },
+      }} checkboxSelection={true} pageSize={10} rows={rows} columns={column} />
     </div>
     );
 }
